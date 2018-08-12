@@ -83,5 +83,15 @@ Comment out all below
 
 ```
 
+## 7.setting wordpress  
+
+```
+# cd /var/www/hoge.jp
+# wget https://wordpress.org/latest.zip
+# unzip latest.zip
+# cd ..
+# chown -R nobody:nobody hoge.jp
+```
+
 Enjoy!!!🤣
 
