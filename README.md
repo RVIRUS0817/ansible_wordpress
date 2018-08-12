@@ -6,8 +6,8 @@
 ・CentOS7  
 ・wordpress  
 ・php7.2  
-・h2o 2.2.4  
-・Mysql5.7  
+・H2O 2.2.4  
+・MySQL5.7  
 
 ## 1.setting user
 
