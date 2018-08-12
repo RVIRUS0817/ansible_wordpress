@@ -1,0 +1,2 @@
+- name: restart h2o
+  service: name=h2o state=restarted

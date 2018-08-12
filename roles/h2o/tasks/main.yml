@@ -1,0 +1,55 @@
+- name: copy bintray-tatsushid-h2o-rpm.repo
+  copy:
+    src: "roles/h2o/files/bintray-tatsushid-h2o-rpm.repo"
+    dest: "/etc/yum.repos.d/"
+
+- name: install h2o
+  yum: name=h2o state=present
+
+- name: start h2o
+  service: name=h2o enabled=yes state=started
+
+- name: add directory mruby and conf.d
+  file:
+    src: "{{ item.src }}"
+    dest: "/etc/h2o/."
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - { src: mruby }
+    - { src: conf.d }
+
+- name: copy mruby/htpasswd.rb
+  copy:
+    src: "roles/h2o/files/mruby/{{ item.src }}"
+    dest: "/etc/h2o/mruby/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - { src: htpasswd.rb }
+
+- name: copy h2o hoge.jp.conf
+  copy:
+    src: "roles/h2o/files/conf.d/{{ item.src }}"
+    dest: "/etc/h2o/conf.d/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - { src: hoge.jp.conf }
+
+- name: copy h2o.conf
+  copy:
+    src: "roles/h2o/files/{{ item.src }}"
+    dest: "/etc/h2o/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - { src: h2o.conf }
+  notify: restart h2o

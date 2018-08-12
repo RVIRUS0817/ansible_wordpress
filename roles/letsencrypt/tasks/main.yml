@@ -1,0 +1,9 @@
+- name: git_clone
+  git:
+    repo: "https://github.com/letsencrypt/letsencrypt.git"
+    dest: "/etc/letsencrypt/"
+
+- name: get letsencrypt
+  become_user: root
+  shell:  /etc/letsencrypt/letsencrypt-auto certonly --standalone -d hoge.jp --agree-tos
+  ignore_errors: yes

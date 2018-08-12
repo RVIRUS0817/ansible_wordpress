@@ -1,0 +1,13 @@
+- hosts: all
+  roles:
+    - common
+
+- hosts: hoge-server01
+  roles:
+    - h2o
+    - mysql
+    - php
+    - cron
+    - sysctl
+    - letsencrypt
+    - logrotate

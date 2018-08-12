@@ -1,0 +1,24 @@
+- name: install rpm
+  yum: name={{ item }} state=present
+  with_items:
+    - "{{ MYSQL_VERSION }}"
+#
+- name: install mysqld
+  yum: name={{ item }} state=installed 
+  with_items:
+    - mysql-community-server
+
+- name: start mysqld
+  service: name=mysqld state=started enabled=yes
+
+- name: copy mysqld config
+  copy:
+    src: "roles/mysql/files/{{ item.src }}"
+    dest: "/etc/{{ item.dest }}"
+    owner: root
+    group: root
+    backup: no
+    mode: 644
+  with_items:
+    - { src: my.cnf, dest: . }
+  notify: restart mysqld

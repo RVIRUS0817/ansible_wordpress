@@ -1,0 +1,9 @@
+- name: copy sysctl.conf
+  copy:
+    src: "{{ item.src }}"
+    dest: "/etc/{{ item.dest }}"
+    backup: no
+    owner: root
+    group: root
+  with_items:
+    - { src: roles/sysctl/files/sysctl.conf, dest: . }

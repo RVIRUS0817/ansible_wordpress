@@ -1,0 +1,8 @@
+- name: include tasks/base-packages.yml
+  include_tasks: tasks/base-packages.yml
+
+- name: include tasks/hostname.yml
+  include_tasks: tasks/hostname.yml
+
+- name: include tasks/user.yml
+  include_tasks: tasks/user.yml

@@ -1,0 +1,16 @@
+/var/log/h2o/*.log {
+        daily
+        missingok
+        rotate 7
+        compress
+        delaycompress
+        notifempty
+        create 640 root adm
+        sharedscripts
+        postrotate
+                if invoke-rc.d h2o status >/dev/null 2>&1 ; then \
+                        invoke-rc.d h2o reload >/dev/null 2>&1; \
+                fi;
+        endscript
+}
+

@@ -1,0 +1,26 @@
+- name: create user
+  user:
+    name: "{{ item.name }}"
+    createhome: yes
+    password: "{{ item.password | password_hash('sha512') }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups }}"
+    state: "{{ item.state }}"
+    remove: "{{ item.remove }}"
+  with_items:
+  - { shell: '/bin/bash', groups: 'hoge', state: 'present', remove: 'no', name: 'hoge', password: 'xxxxxx' }
+
+
+- name: add sudoers
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: "{{ item.match }}"
+    line: "{{ item.line }}"
+  with_items:
+  - { match: 'hoge', line: 'hoge ALL=(ALL) NOPASSWD: ALL' }
+
+- name: authorized_key for user hoge 
+  authorized_key:
+    user: hoge
+    key: "ssh-rsa"

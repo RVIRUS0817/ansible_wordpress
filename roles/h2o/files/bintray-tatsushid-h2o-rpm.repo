@@ -1,0 +1,6 @@
+[bintray-tatsushid-h2o-rpm]
+name=bintray-tatsushid-h2o-rpm
+baseurl=https://dl.bintray.com/tatsushid/h2o-rpm/centos/$releasever/$basearch/
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1

@@ -1,0 +1,16 @@
+- name: cron letsencrypt
+  cron: name="letsencrypt" 
+    minute="0" 
+    hour="5" 
+    job="sudo systemctl stop h2o ; /etc/letsencrypt/certbot-auto renew ; sudo systemctl start h2o"
+
+- name: copy crontab
+  copy:
+    src: "{{ item.src }}"
+    dest: "/etc/{{ item.dest }}"
+    backup: no
+    owner: root
+    group: root
+  with_items:
+    - { src: roles/cron/files/crontab, dest: . }
+

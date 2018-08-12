@@ -1,0 +1,14 @@
+- name: copy h2o
+  copy:
+    src: "{{ item.src }}"
+    dest: "/etc/logrotate.d/{{ item.dest }}"
+    backup: no
+    owner: root
+    group: root
+  with_items:
+    - { src: roles/logrotate/files/h2o, dest: . }
+
+
+- name: restart logrotate
+  shell: /usr/sbin/logrotate /etc/logrotate.conf
+ 

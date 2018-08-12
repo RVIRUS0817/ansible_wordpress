@@ -1,0 +1,6 @@
+[web]
+hoge-server01
+
+#group
+[prd:children]
+web
