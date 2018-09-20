@@ -5,5 +5,5 @@
     backup: no
     owner: root
     group: root
-  with_items:
+  loop:
     - { src: roles/sysctl/files/sysctl.conf, dest: . }

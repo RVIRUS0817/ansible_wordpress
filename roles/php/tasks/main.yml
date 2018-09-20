@@ -1,12 +1,12 @@
 - name: install remi epel
   yum: name={{ item }} state=present
-  with_items:
+  loop:
     - "{{ PHP_VERSION_EPEL }}"
     - "{{ PHP_VERSION_REMI }}"
 
 - name: php72 install
   yum: name={{ item }} state=present enablerepo=remi,remi-php72
-  with_items:
+  loop:
     - php
     - php-fpm
     - php-gd
@@ -25,7 +25,7 @@
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - { src: "php.ini", dest: . }
 
 - name: copy php-fpm www.conf
@@ -36,6 +36,6 @@
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - { src: "www.conf", dest: . }
   notify: restart php7.2-fpm

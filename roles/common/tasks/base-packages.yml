@@ -1,6 +1,6 @@
 - name: yum install bacepackage
   yum: name={{ item }} state=present
-  with_items:
+  loop:
     - vim
     - zsh
     - git

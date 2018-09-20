@@ -1,11 +1,11 @@
 - name: install rpm
   yum: name={{ item }} state=present
-  with_items:
+  loop:
     - "{{ MYSQL_VERSION }}"
 #
 - name: install mysqld
   yum: name={{ item }} state=installed 
-  with_items:
+  loop:
     - mysql-community-server
 
 - name: start mysqld
@@ -19,6 +19,6 @@
     group: root
     backup: no
     mode: 644
-  with_items:
+  loop:
     - { src: my.cnf, dest: . }
   notify: restart mysqld

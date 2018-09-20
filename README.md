@@ -34,7 +34,7 @@ Please change hoge to domain name!!
 ## 3.dry-run
 
 ````
-$ ansible-playbook -i hosts wordpress.yml --check
+$ ansible-playbook -i hosts wordpress.yml -C
 ````
 
 ## 4.run

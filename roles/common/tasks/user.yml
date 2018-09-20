@@ -7,7 +7,7 @@
     groups: "{{ item.groups }}"
     state: "{{ item.state }}"
     remove: "{{ item.remove }}"
-  with_items:
+  loop:
   - { shell: '/bin/bash', groups: 'hoge', state: 'present', remove: 'no', name: 'hoge', password: 'xxxxxx' }
 
 
@@ -17,7 +17,7 @@
     state: present
     regexp: "{{ item.match }}"
     line: "{{ item.line }}"
-  with_items:
+  loop:
   - { match: 'hoge', line: 'hoge ALL=(ALL) NOPASSWD: ALL' }
 
 - name: authorized_key for user hoge 

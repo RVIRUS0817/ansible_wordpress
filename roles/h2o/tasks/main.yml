@@ -16,7 +16,7 @@
     owner: root
     group: root
     mode: 0755
-  with_items:
+  loop:
     - { src: mruby }
     - { src: conf.d }
 
@@ -28,7 +28,7 @@
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - { src: htpasswd.rb }
 
 - name: copy h2o hoge.jp.conf
@@ -39,7 +39,7 @@
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - { src: hoge.jp.conf }
 
 - name: copy h2o.conf
@@ -50,6 +50,6 @@
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - { src: h2o.conf }
   notify: restart h2o
