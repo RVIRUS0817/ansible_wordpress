@@ -21,6 +21,7 @@
   - { match: 'hoge', line: 'hoge ALL=(ALL) NOPASSWD: ALL' }
 
 - name: authorized_key for user hoge 
+  ignore_errors: true
   authorized_key:
     user: hoge
     key: "ssh-rsa"
