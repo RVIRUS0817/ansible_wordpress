@@ -1,2 +1,2 @@
 - name: restart mysqld
-  service: name=mysqld state=restarted
+  systemd: name=mysqld state=restarted
