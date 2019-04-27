@@ -50,6 +50,7 @@ Set up MySQL manually. Let's set up a dedicated DB and authority for wordpress.
 ・MySQL
 
 ```
+$ grep 'temporary password' /var/log/mysqld.log
 $ mysql_secure_installation
 change root pass
 all Y
