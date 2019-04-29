@@ -9,7 +9,7 @@
     - mysql-community-server
 
 - name: start mysqld
-  service: name=mysqld state=started enabled=yes
+  systemd: name=mysqld state=started enabled=yes
 
 - name: copy mysqld config
   copy:

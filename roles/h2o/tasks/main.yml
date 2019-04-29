@@ -7,7 +7,7 @@
   yum: name=h2o state=present
 
 - name: start h2o
-  service: name=h2o enabled=yes state=started
+  systemd: name=h2o enabled=yes state=started
 
 - name: add directory mruby and conf.d
   file: path=/etc/h2o/{{ item.name }} state=directory owner=root group=root mode=0755
