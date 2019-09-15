@@ -13,6 +13,7 @@
     - php-bcmath
     - php-mbstring
     - php-xml
+    - php-curl  
     - php-ldap
     - php-mysqlnd
     - php-opcache
