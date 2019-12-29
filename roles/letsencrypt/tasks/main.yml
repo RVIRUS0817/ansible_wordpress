@@ -2,6 +2,7 @@
   git:
     repo: "https://github.com/letsencrypt/letsencrypt.git"
     dest: "/etc/letsencrypt/"
+  ignore_errors: yes
 
 - name: get letsencrypt
   become_user: root
