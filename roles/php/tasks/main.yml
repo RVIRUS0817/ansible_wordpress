@@ -4,8 +4,8 @@
     - "{{ PHP_VERSION_EPEL }}"
     - "{{ PHP_VERSION_REMI }}"
 
-- name: php72 install
-  yum: name={{ item }} state=present enablerepo=remi,remi-php72
+- name: php74 install
+  yum: name={{ item }} state=present enablerepo=remi,remi-php74
   loop:
     - php
     - php-fpm
@@ -39,4 +39,4 @@
     mode: 0644
   loop:
     - { src: "www.conf", dest: . }
-  notify: restart php7.2-fpm
+  notify: restart php7.4-fpm

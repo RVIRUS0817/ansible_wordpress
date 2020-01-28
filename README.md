@@ -3,11 +3,11 @@
 ![wordpress-logo-680x400](https://user-images.githubusercontent.com/5633085/44000641-d705b6d0-9e5e-11e8-8431-3fd766c459a3.png)
 
 ## Environment
-・CentOS7  
-・wordpress  
-・php7.2  
-・H2O 2.2.4  
-・MySQL5.7  
+- CentOS7  
+- wordpress  
+- php7.4
+- H2O 2.2.4  
+- MySQL5.7  
 
 ## 1.setting user
 
