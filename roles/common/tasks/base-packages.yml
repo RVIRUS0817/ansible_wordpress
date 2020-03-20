@@ -13,4 +13,4 @@
     - ipa-pgothic-fonts
 
 - name: stop firewalld
-  systemd: name=firewalld state=stopped
+  systemd: name=firewalld enabled=no state=stopped
