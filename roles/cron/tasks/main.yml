@@ -2,7 +2,7 @@
   cron: name="letsencrypt" 
     minute="0" 
     hour="5" 
-    job="sudo systemctl stop h2o ; /etc/letsencrypt/certbot-auto renew ; sudo systemctl start h2o"
+    job="/etc/letsencrypt/certbot-auto renew"
 
 - name: copy crontab
   copy:
