@@ -1,2 +1,2 @@
-- name: restart php7.4-fpm
-  systemd: name=php7.4-fpm state=restarted
+- name: restart php-fpm
+  systemd: name=php-fpm state=restarted
