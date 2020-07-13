@@ -18,6 +18,9 @@
     - php-mysqlnd
     - php-opcache
 
+- name: start php-fpm
+  systemd: name=php-fpm state=started enabled=yes
+
 - name: copy php.ini
   copy:
     src: "roles/php/files/{{ item.src }}"
