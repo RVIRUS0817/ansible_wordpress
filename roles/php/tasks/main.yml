@@ -42,4 +42,4 @@
     mode: 0644
   loop:
     - { src: "www.conf", dest: . }
-  notify: restart php7.4-fpm
+  notify: restart php-fpm
