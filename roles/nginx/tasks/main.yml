@@ -1,0 +1,35 @@
+- name: copy nginx.repo
+  copy:
+    src: "{{ item.src }}"
+    dest: "/etc/yum.repos.d/{{ item.dest }}"
+    backup: no
+    owner: root
+    group: root
+  with_items:
+    - { src: roles/nginx/files/nginx.repo, dest: . }
+
+
+- name: install nginx
+  apt: name={{ item }} state=installed
+  with_items:
+  - nginx
+
+- name: start nginx
+  sudo: True
+  service: name=nginx enabled=yes state=started
+
+- file: path=/var/www/{{ item.name }} state=directory owner=root group=root mode=0755
+  with_items:
+        - { name: 'wordpress' }
+
+- name: copy nginx conf
+  copy:
+    src: "{{ item.src }}"
+    dest: "/etc/nginx/{{ item.dest }}"
+    backup: no
+    owner: root
+    group: root
+  with_items:
+    - { src: roles/nginx/files/conf.d, dest: . }
+    - { src: roles/nginx/files/nginx.conf, dest: . }
+  notify: restart nginx
