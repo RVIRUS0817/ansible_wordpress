@@ -8,19 +8,13 @@
   with_items:
     - { src: roles/nginx/files/nginx.repo, dest: . }
 
-
 - name: install nginx
-  apt: name={{ item }} state=installed
-  with_items:
+  yum: name={{ item }} state=installed
+  loop:
   - nginx
 
 - name: start nginx
-  sudo: True
-  service: name=nginx enabled=yes state=started
-
-- file: path=/var/www/{{ item.name }} state=directory owner=root group=root mode=0755
-  with_items:
-        - { name: 'wordpress' }
+  systemd: name=nginx enabled=yes state=started
 
 - name: copy nginx conf
   copy:
@@ -29,7 +23,7 @@
     backup: no
     owner: root
     group: root
-  with_items:
+  loop:
     - { src: roles/nginx/files/conf.d, dest: . }
     - { src: roles/nginx/files/nginx.conf, dest: . }
   notify: restart nginx
