@@ -80,7 +80,7 @@ Comment out all below
 ```
 
 ```
-# /etc/letsencrypt/letsencrypt-auto certonly --standalone -d hoge.jp --agree-tos
+certbot certonly --webroot -w /var/www/hoge -d hoge.com
 
 ```
 

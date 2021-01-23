@@ -1,5 +1,5 @@
-- name: git_clone
-  git:
-    repo: "https://github.com/letsencrypt/letsencrypt.git"
-    dest: "/etc/letsencrypt/"
-  ignore_errors: yes
+- name: letsencrypt install
+  yum: name={{ item }} state=present
+  loop:
+    - certbot
+    - python-certbot-nginx
